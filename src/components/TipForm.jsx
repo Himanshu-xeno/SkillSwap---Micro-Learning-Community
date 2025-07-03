@@ -1,0 +1,31 @@
+import { useState } from 'react';
+
+function TipForm() {
+  const [tip, setTip] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Tip submitted:', tip);
+    setTip(''); // Clear input
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mb-8">
+  <textarea
+    className="border border-gray-300 w-full p-3 rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    placeholder="Your tip..."
+    value={tip}
+    onChange={(e) => setTip(e.target.value)}
+  />
+  <button
+    type="submit"
+    className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition"
+  >
+    Post Tip
+  </button>
+</form>
+
+  );
+}
+
+export default TipForm;

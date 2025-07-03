@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css'; // optional, if you have Tailwind only, you can remove this too
+import Header from './components/Header';
+import TipForm from './components/TipForm';
+import TipCard from './components/TipCard';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const tips = [
+    { id: 1, text: 'Start small and build daily.' },
+    { id: 2, text: 'Write clean, reusable code!' },
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen bg-gray-100">
+      <Header />
+      <main className="max-w-xl mx-auto p-4">
+        <TipForm />
+        {tips.map((tip) => (
+          <TipCard key={tip.id} tip={tip} />
+        ))}
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
