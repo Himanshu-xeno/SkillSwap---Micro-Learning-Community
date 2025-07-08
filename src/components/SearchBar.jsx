@@ -1,7 +1,7 @@
 // src/components/SearchBar.jsx
 export default function SearchBar() {
   return (
-    <div className="flex flex-col md:flex-row max-w-6xl mx-auto py-5 justify-between items-center">
+    <div className="flex flex-col md:flex-row justify-center items-center gap-10 my-5">
       {/* 🔍 Search Input */}
       <input
         type="text"
@@ -19,7 +19,7 @@ export default function SearchBar() {
       </select>
 
       {/* ↕️ Sort Button */}
-      <button className="w-full md:w-auto px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-200">
+      <button className="w-full md:w-auto px-4 py-2 bg-blue-600 text-black font-medium rounded-lg hover:bg-blue-700 transition duration-200">
         Sort by Likes
       </button>
     </div>
