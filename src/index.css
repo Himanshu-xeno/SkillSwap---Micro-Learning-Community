@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-
-
 body, html, #root {
   margin: 0;
   padding: 0;
@@ -47,7 +45,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #ece1e1;
+  background-color: #c5d9e9;
   cursor: pointer;
   transition: border-color 0.25s;
 }
