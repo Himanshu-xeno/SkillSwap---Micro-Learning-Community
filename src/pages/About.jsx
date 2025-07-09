@@ -1,6 +1,4 @@
 // src/pages/About.jsx
-
-// ✅ Corrected import path — relative, no 'src/' prefix, no spaces in file name
 import aboutImage from '../assets/jai-jagannath.jpeg';
 
 export default function About() {
