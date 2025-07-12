@@ -26,7 +26,7 @@ export default function About() {
           This project is built with React and Tailwind CSS to demonstrate modern web development practices, 
           reusable components, and clean UI design. Join us as we keep expanding SkillSwap into a place for everyday learning.
         </p>
-        <button className="px-6 py-3 bg-blue-600 text-black uppercase tracking-wider text-sm hover:bg-blue-700 transition">
+        <button className="px-6 py-3 !bg-blue-600 text-white uppercase tracking-wider text-sm hover:bg-blue-700 transition">
           Learn More
         </button>
       </div>

@@ -6,7 +6,7 @@ export default function TipCard({ tip }) {
   const [bookmarked, setBookmarked] = useState(tip.bookmarked || false);
 
   return (
-    <div className="w-full border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-md transition">
+    <div className="w-full border bg-grey-400 border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-md transition">
       {/* Title */}
       <h2 className="font-bold text-lg mb-2">{tip.title}</h2>
 
@@ -22,14 +22,14 @@ export default function TipCard({ tip }) {
       <div className="flex flex-col md:flex-row justify-center items-center gap-10 ">
         <button
           onClick={() => setLikes(likes + 1)}
-          className="flex items-center gap-1 text-sm text-black hover:text-grey-200 transition"
+          className="flex items-center gap-1 text-sm !bg-amber-50 text-black hover:text-grey-200 transition"
         >
           ❤️ {likes}
         </button>
 
         <button
           onClick={() => setBookmarked(!bookmarked)}
-          className={`text-xl ${bookmarked ? 'text-yellow-400' : 'text-gray-400'} hover:text-yellow-500 transition`}
+          className={`text-xl !bg-amber-50 ${bookmarked ?  'text-yellow-400' : 'text-gray-400'} hover:text-yellow-500 transition`}
         >
           🔖
         </button>

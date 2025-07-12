@@ -1,23 +1,25 @@
+// src/App.jsx
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from './components/Navbar';
-import Home from './pages/Home'; // we will create this
-import PostTip from './pages/PostTip'; // create this later
-import Bookmarks from './pages/Bookmarks'; // create this later
-import About from './pages/About'; // create this later
-import NotFound from './pages/NotFound'; // optional 404
+import Home from './pages/Home';
+import PostTip from './pages/PostTip'; // ✅ use the dedicated Post page
+import Bookmarks from './pages/Bookmarks';
+import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-white-100">
-        <Navbar />
-        
-        <main className="bg-white flex-grow w-screen px-0 text-red-500">
+      {/* ✅ Navbar is always visible */}
+      <Navbar />
+
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow pt-20 overflow-y-auto bg-white px-4 text-gray-900">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/post" element={<PostTip />} />
+            <Route path="/post" element={<PostTip />} /> {/* ✅ Post route */}
             <Route path="/bookmarks" element={<Bookmarks />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NotFound />} />
