@@ -28,6 +28,14 @@ export default function Bookmarks() {
     likes: 8,
     bookmarked: false,
   },
+   {
+    id: 4,
+    title: "Dockerize your applications",
+    description: "Containers make your app portable and easy to deploy anywhere.",
+    tag: "docker",
+    likes: 12,
+    bookmarked: false,
+  },
   ];
 
   return (
