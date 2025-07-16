@@ -36,6 +36,14 @@ export default function Bookmarks() {
     likes: 12,
     bookmarked: false,
   },
+   {
+    id: 5,
+    title: "Use meaningful variable names",
+    description: "Clear variable names improve readability and reduce bugs in your code.",
+    tag: "best practices",
+    likes: 7,
+    bookmarked: true,
+  },
   ];
 
   return (
