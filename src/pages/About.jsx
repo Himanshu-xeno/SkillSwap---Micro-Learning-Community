@@ -3,7 +3,7 @@ import aboutImage from '../assets/jai-jagannath.jpeg';
 
 export default function About() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-[80vh] px-6 md:px-12 py-12 gap-8">
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-[80vh] px-6 md:px-12  gap-8 ">
       
       {/* Left content */}
       <div className="flex-1 max-w-xl">

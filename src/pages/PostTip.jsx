@@ -25,7 +25,7 @@ export default function PostTip({ addTip }) {
   };
 
   return (
-    <div className="flex items-center justify-center py-6 bg-gray-50 min-h-screen">
+    <div className="flex items-center justify-center py-6 bg-gray-50 overflow-hidden">
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-900">
           Post a New Tip
@@ -62,7 +62,7 @@ export default function PostTip({ addTip }) {
           </select>
           <button
             type="submit"
-            className="bg-red-500 text-white px-4 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition duration-200"
+            className="!bg-red-500 text-white px-4 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition duration-200"
           >
             Submit Tip
           </button>

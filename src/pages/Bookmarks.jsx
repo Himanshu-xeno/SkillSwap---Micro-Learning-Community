@@ -47,7 +47,7 @@ export default function Bookmarks() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto pt-24 px-4">
+    <div className="max-w-6xl mx-auto pt-2 pb-4 px-4">
       <h1 className="text-4xl font-bold mb-8 text-center text-gray-900">
         Your Bookmarked Tips
       </h1>
