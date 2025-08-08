@@ -1,4 +1,3 @@
-// src/pages/PostTip.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,16 +11,24 @@ export default function PostTip({ addTip }) {
     e.preventDefault();
 
     const newTip = {
-      id: Date.now(),
+      id: Date.now(), // unique ID
       title,
       description,
       tag,
       likes: 0,
-      bookmarked: false,
+      bookmarked: false
     };
 
-    addTip(newTip);     // ⬅️ Add the tip to the list
-    navigate('/');       // ⬅️ Redirect to homepage
+    // Add to App.jsx state + localStorage
+    addTip(newTip);
+
+    // Reset form fields
+    setTitle('');
+    setDescription('');
+    setTag('');
+
+    // Redirect to homepage
+    navigate('/');
   };
 
   return (

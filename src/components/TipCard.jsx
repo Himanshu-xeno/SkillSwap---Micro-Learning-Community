@@ -1,10 +1,4 @@
-// src/components/TipCard.jsx
-import { useState } from "react";
-
-export default function TipCard({ tip }) {
-  const [likes, setLikes] = useState(tip.likes);
-  const [bookmarked, setBookmarked] = useState(tip.bookmarked || false);
-
+export default function TipCard({ tip, toggleLike, toggleBookmark }) {
   return (
     <div className="w-full border bg-grey-400 border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-md transition">
       {/* Title */}
@@ -21,15 +15,15 @@ export default function TipCard({ tip }) {
       {/* Like & Bookmark Row */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-10 ">
         <button
-          onClick={() => setLikes(likes + 1)}
+          onClick={() => toggleLike(tip.id)}
           className="flex items-center gap-1 text-sm !bg-amber-50 text-black hover:text-grey-200 transition"
         >
-          ❤️ {likes}
+          ❤️ {tip.likes}
         </button>
 
         <button
-          onClick={() => setBookmarked(!bookmarked)}
-          className={`text-xl !bg-amber-50 ${bookmarked ?  'text-yellow-400' : 'text-gray-400'} hover:text-yellow-500 transition`}
+          onClick={() => toggleBookmark(tip.id)}
+          className={`text-xl !bg-amber-50 ${tip.bookmarked ? 'text-yellow-400' : 'text-gray-400'} hover:text-yellow-500 transition`}
         >
           🔖
         </button>

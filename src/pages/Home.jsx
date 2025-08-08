@@ -1,8 +1,7 @@
-// src/pages/Home.jsx
 import SearchBar from '../components/SearchBar';
 import TipCard from '../components/TipCard';
 
-export default function Home({ tips }) {
+export default function Home({ tips, toggleLike, toggleBookmark }) {
   return (
     <div className="flex flex-col items-center justify-center px-4">
       <div className="w-full max-w-4xl">
@@ -11,7 +10,12 @@ export default function Home({ tips }) {
 
       <div className="w-full max-w-6xl mt-8 my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {tips.map((tip) => (
-          <TipCard key={tip.id} tip={tip} />
+          <TipCard
+            key={tip.id}
+            tip={tip}
+            toggleLike={toggleLike}
+            toggleBookmark={toggleBookmark}
+          />
         ))}
       </div>
     </div>

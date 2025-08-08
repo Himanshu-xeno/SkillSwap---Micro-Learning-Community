@@ -1,5 +1,4 @@
-// App.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -11,60 +10,50 @@ import About from './pages/About';
 import NotFound from './pages/NotFound';
 
 function App() {
-  const [tips, setTips] = useState([
-    {
-      id: 1,
-      title: "Use useState wisely",
-      description: "Always initialize your state properly to avoid bugs and unexpected behavior.",
-      tag: "react",
-      likes: 10,
-      bookmarked: false,
-    },
-    {
-      id: 2,
-      title: "Write clear commit messages",
-      description: "Good commit messages make collaboration easy and code history readable.",
-      tag: "git",
-      likes: 5,
-      bookmarked: true,
-    },
-    {
-    id: 3,
-    title: "Master Regex basics",
-    description: "Regular expressions help you match, search, and replace text patterns efficiently.",
-    tag: "regex",
-    likes: 8,
-    bookmarked: false,
-  },
-  {
-    id: 4,
-    title: "Dockerize your applications",
-    description: "Containers make your app portable and easy to deploy anywhere.",
-    tag: "docker",
-    likes: 12,
-    bookmarked: false,
-  },
-  {
-    id: 5,
-    title: "Use meaningful variable names",
-    description: "Clear variable names improve readability and reduce bugs in your code.",
-    tag: "best practices",
-    likes: 7,
-    bookmarked: true,
-  },
-  {
-    id: 6,
-    title: "Keep components small & reusable",
-    description: "Small components are easier to maintain, test, and reuse across your project.",
-    tag: "react",
-    likes: 15,
-    bookmarked: false,
-  },
-  ]);
+  const [tips, setTips] = useState([]);
 
-  // Function to add a tip
+  // Load tips from localStorage or tips.json
+  useEffect(() => {
+    const savedTips = localStorage.getItem("tips");
+    if (savedTips) {
+      setTips(JSON.parse(savedTips));
+    } else {
+      fetch('/tips.json')
+        .then((res) => res.json())
+        .then((data) => {
+          setTips(data);
+          localStorage.setItem("tips", JSON.stringify(data));
+        })
+        .catch((err) => console.error("Error loading tips:", err));
+    }
+  }, []);
+
+  // Save updated tips to localStorage
+  const saveTips = (updatedTips) => {
+    setTips(updatedTips);
+    localStorage.setItem("tips", JSON.stringify(updatedTips));
+  };
+
+  // Add new tip
   const addTip = (tip) => {
-    setTips((prev) => [tip, ...prev]);
+    const updatedTips = [tip, ...tips];
+    saveTips(updatedTips);
+  };
+
+  // Toggle like
+  const toggleLike = (id) => {
+    const updatedTips = tips.map(tip =>
+      tip.id === id ? { ...tip, likes: tip.likes + 1 } : tip
+    );
+    saveTips(updatedTips);
+  };
+
+  // Toggle bookmark
+  const toggleBookmark = (id) => {
+    const updatedTips = tips.map(tip =>
+      tip.id === id ? { ...tip, bookmarked: !tip.bookmarked } : tip
+    );
+    saveTips(updatedTips);
   };
 
   return (
@@ -73,9 +62,12 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow pt-20 overflow-y-auto bg-white px-4 text-gray-900">
           <Routes>
-            <Route path="/" element={<Home tips={tips} />} />
+            <Route path="/" element={<Home tips={tips} toggleLike={toggleLike} toggleBookmark={toggleBookmark} />} />
             <Route path="/post" element={<PostTip addTip={addTip} />} />
-            <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route
+  path="/bookmarks"
+  element={<Bookmarks tips={tips} toggleLike={toggleLike} toggleBookmark={toggleBookmark} />}
+/>
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
